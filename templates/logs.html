@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Execution logs · AgentFlow{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Execution logs</h1><p class="muted">Every run with step-by-step details.</p></div></div>
+<form class="card row filters" method="get" action="{{ url_for('logs') }}">
+  <select name="status">
+    <option value="">All statuses</option>
+    <option value="completed" {{ 'selected' if request.args.get('status') == 'completed' }}>Completed</option>
+    <option value="failed" {{ 'selected' if request.args.get('status') == 'failed' }}>Failed</option>
+  </select>
+  <select name="workflow_id">
+    <option value="">All workflows</option>
+    {% for w in workflows %}<option value="{{ w.id }}" {{ 'selected' if request.args.get('workflow_id') == w.id }}>{{ w.name }}</option>{% endfor %}
+  </select>
+  <input name="q" placeholder="Search label or input" value="{{ request.args.get('q', '') }}">
+  <button class="btn primary" type="submit">Filter</button>
+  <a class="btn" href="{{ url_for('logs') }}">Reset</a>
+  <a class="btn" href="{{ csv_url }}">⬇ Export CSV</a>
+  <button class="btn" type="button" data-toggle-all>Expand / collapse all</button>
+</form>
+{% for r in runs %}
+<details class="card run" {{ 'open' if r.id == open_id }}>
+  <summary>
+    <span class="badge status {{ r.status }}">{{ r.status }}</span>
+    <strong>{{ wf.get(r.workflow_id, '(deleted workflow)') }}</strong>
+    <span class="chip">{{ r.label }}</span>
+    <span class="muted">{{ r.start.replace('T', ' ') }}</span>
+    <span class="sum-meta">{{ r.duration }}s · {{ r.tokens }} tokens · ${{ '%.5f'|format(r.cost) }}</span>
+  </summary>
+  <div class="run-body">
+    <p><b>Input:</b> {{ r.input }}</p>
+    {% for s in r.steps %}
+    <details class="step">
+      <summary>#{{ loop.index }} <b>{{ s.agent }}</b>
+        <span class="badge role" style="--h:{{ s.role|hue }}">{{ s.role }}</span>
+        {% if s.error %}<span class="badge status failed">error</span>{% endif %}
+        <span class="muted">{{ s.duration }}s · {{ s.tokens }} tok · ${{ '%.5f'|format(s.cost) }} · {{ s.model }}</span></summary>
+      <div class="grid2">
+        <div><h4>Input</h4><pre>{{ s.input }}</pre></div>
+        <div><h4>Output</h4><pre>{{ s.output }}</pre></div>
+      </div>
+      {% if s.error %}<div class="alert error">{{ s.error }}</div>{% endif %}
+    </details>
+    {% endfor %}
+  </div>
+</details>
+{% else %}<div class="card"><p class="muted">No runs match. Run a workflow from the <a href="{{ url_for('workflows') }}">Workflows</a> page.</p></div>{% endfor %}
+{% endblock %}

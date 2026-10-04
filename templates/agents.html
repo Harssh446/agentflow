@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Agents · AgentFlow{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Agents</h1><p class="muted">Create agents and attach the tools they can use.</p></div></div>
+<div class="two-col">
+  <form class="card" method="post" action="{{ url_for('agent_save') }}">
+    <h3>{{ 'Edit agent' if edit else 'New agent' }}</h3>
+    {% if edit %}<input type="hidden" name="id" value="{{ edit.id }}">{% endif %}
+    <label>Name<input name="name" required value="{{ edit.name if edit else '' }}"></label>
+    <label>Role<input name="role" placeholder="e.g. Researcher" value="{{ edit.role if edit else '' }}"></label>
+    <label>Goal<input name="goal" value="{{ edit.goal if edit else '' }}"></label>
+    <label>Instructions<textarea name="instructions" rows="5">{{ edit.instructions if edit else '' }}</textarea></label>
+    <label>Model
+      <select name="model">
+        {% set cur = edit.model if edit else 'grok-3-mini' %}
+        {% for m in models %}<option value="{{ m }}" {{ 'selected' if m == cur }}>{{ m }}</option>{% endfor %}
+      </select></label>
+    <fieldset><legend>Tools</legend>
+      {% for t in tools %}
+      <label class="check"><input type="checkbox" name="tools" value="{{ t.id }}" {{ 'checked' if edit and t.id in edit.tools }}> {{ t.name }} <span class="muted">({{ t.type }})</span></label>
+      {% else %}<p class="muted">No tools yet. <a href="{{ url_for('tools_page') }}">Add one</a>.</p>{% endfor %}
+    </fieldset>
+    <div class="row">
+      <button class="btn primary" type="submit">{{ 'Save changes' if edit else 'Create agent' }}</button>
+      {% if edit %}<a class="btn" href="{{ url_for('agents') }}">Cancel</a>{% endif %}
+    </div>
+  </form>
+  <div class="list">
+    {% for a in agents %}
+    <div class="card agent">
+      <div class="row between"><h3>{{ a.name }}</h3><span class="badge role" style="--h:{{ a.role|hue }}">{{ a.role }}</span></div>
+      <p><b>Goal:</b> {{ a.goal or '-' }}</p>
+      <p class="muted clamp">{{ a.instructions }}</p>
+      <p class="muted">Model: {{ a.model }} · Tools:
+        {% for tid in a.tools %}{{ tool_names.get(tid, tid) }}{{ ', ' if not loop.last }}{% else %}none{% endfor %}</p>
+      <div class="row">
+        <a class="btn" href="{{ url_for('agents', edit=a.id) }}">Edit</a>
+        <form method="post" action="{{ url_for('agent_delete', aid=a.id) }}" data-confirm="Delete this agent? It will also be removed from workflows.">
+          <button class="btn danger" type="submit">Delete</button></form>
+      </div>
+    </div>
+    {% else %}<div class="card"><p class="muted">No agents yet. Create your first one.</p></div>{% endfor %}
+  </div>
+</div>
+{% endblock %}

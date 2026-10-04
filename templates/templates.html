@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Templates · AgentFlow{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Template library</h1><p class="muted">Ready-made workflows. "Use template" creates your own editable copy.</p></div></div>
+<div class="tabs">
+  <a class="tab {{ 'active' if not cat }}" href="{{ url_for('template_library') }}">All</a>
+  {% for c in categories %}<a class="tab {{ 'active' if cat == c }}" href="{{ url_for('template_library', category=c) }}">{{ c }}</a>{% endfor %}
+</div>
+<div class="cards">
+  {% for t in templates %}
+  <div class="card">
+    <span class="chip">{{ t.category }}</span>
+    <h3>{{ t.name }}</h3>
+    <p class="muted">{{ t.description }}</p>
+    <p class="flow">{{ t.steps|join(' → ') }}</p>
+    <form method="post" action="{{ url_for('template_use', tid=t.id) }}">
+      <button class="btn primary" type="submit">Use template</button></form>
+  </div>
+  {% else %}<div class="card"><p class="muted">No templates in this category.</p></div>{% endfor %}
+</div>
+{% endblock %}

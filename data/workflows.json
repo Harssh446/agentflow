@@ -1,0 +1,62 @@
+[
+  {
+    "id": "w_6ba6ed50",
+    "name": "Business Report Automation (copy)",
+    "nodes": [
+      {
+        "id": "n1",
+        "agent_id": "a_analyst",
+        "x": 40,
+        "y": 90
+      },
+      {
+        "id": "n2",
+        "agent_id": "a_writer",
+        "x": 290,
+        "y": 170
+      },
+      {
+        "id": "n3",
+        "agent_id": "a_writer",
+        "x": 577,
+        "y": 106
+      }
+    ],
+    "edges": [
+      {
+        "from": "n1",
+        "to": "n2"
+      },
+      {
+        "from": "n2",
+        "to": "n3"
+      }
+    ],
+    "created": "2026-10-04T12:23:06"
+  },
+  {
+    "id": "w_a89a865c",
+    "name": "Code and Document (copy)",
+    "nodes": [
+      {
+        "id": "n1",
+        "agent_id": "a_coder",
+        "x": 40,
+        "y": 90
+      },
+      {
+        "id": "n2",
+        "agent_id": "a_writer",
+        "x": 290,
+        "y": 170
+      }
+    ],
+    "edges": [
+      {
+        "from": "n1",
+        "to": "n2"
+      }
+    ],
+    "created": "2026-10-04T14:05:49"
+  }
+]

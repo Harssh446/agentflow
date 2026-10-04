@@ -1,0 +1,20 @@
+[
+  {
+    "id": "t_calc",
+    "name": "Calculator",
+    "description": "Evaluates arithmetic expressions found in the input text.",
+    "type": "calculator"
+  },
+  {
+    "id": "t_summary",
+    "name": "Text Summarizer",
+    "description": "Extracts the three most important sentences from the input.",
+    "type": "text-summarizer"
+  },
+  {
+    "id": "t_data",
+    "name": "Knowledge Lookup",
+    "description": "Searches the local data/lookup.json knowledge file.",
+    "type": "data-lookup"
+  }
+]

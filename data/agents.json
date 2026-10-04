@@ -1,0 +1,61 @@
+[
+  {
+    "id": "a_researcher",
+    "name": "Research Analyst",
+    "role": "Researcher",
+    "goal": "Collect accurate key facts about the topic",
+    "instructions": "Gather 5 concise key facts. Use tool results when helpful. Output a bullet list.",
+    "tools": [
+      "t_data"
+    ],
+    "model": "grok-3-mini",
+    "created": "2026-10-04T12:22:04"
+  },
+  {
+    "id": "a_writer",
+    "name": "Report Writer",
+    "role": "Writer",
+    "goal": "Turn findings into a clear, short report",
+    "instructions": "Write a structured report of under 200 words from the input. Use a title and short sections.",
+    "tools": [
+      "t_summary"
+    ],
+    "model": "grok-3-mini",
+    "created": "2026-10-04T12:22:04"
+  },
+  {
+    "id": "a_coder",
+    "name": "Code Assistant",
+    "role": "Coder",
+    "goal": "Produce clean, working Python code",
+    "instructions": "Write Python code for the task with brief comments and one usage example. Add a 2-line explanation.",
+    "tools": [],
+    "model": "grok-3-mini",
+    "created": "2026-10-04T12:22:04"
+  },
+  {
+    "id": "a_analyst",
+    "name": "Data Analyst",
+    "role": "Analyst",
+    "goal": "Extract numbers and insights from the input",
+    "instructions": "Identify numbers, trends and calculations. List 3 insights and one recommendation.",
+    "tools": [
+      "t_calc",
+      "t_data"
+    ],
+    "model": "grok-3-mini",
+    "created": "2026-10-04T12:22:04"
+  },
+  {
+    "name": "Zenus",
+    "role": "Summarizer",
+    "goal": "summarize the work done",
+    "instructions": "your job is to summarize the content",
+    "tools": [
+      "t_summary"
+    ],
+    "model": "default",
+    "id": "a_0e0034e9",
+    "created": "2026-10-04T12:35:36"
+  }
+]

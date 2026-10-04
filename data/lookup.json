@@ -1,0 +1,47 @@
+[
+  {
+    "topic": "Solar energy",
+    "fact": "Solar panels typically convert 15-22% of sunlight into electricity, and costs fell about 90% in the last decade.",
+    "keywords": "solar energy panels renewable electricity"
+  },
+  {
+    "topic": "Electric vehicles",
+    "fact": "Battery packs account for roughly 30-40% of an electric vehicle's cost; typical range is 250-400 miles.",
+    "keywords": "electric vehicles ev battery car range"
+  },
+  {
+    "topic": "Machine learning",
+    "fact": "Machine learning models learn patterns from data; common types are supervised, unsupervised and reinforcement learning.",
+    "keywords": "machine learning model training data ai"
+  },
+  {
+    "topic": "Inflation",
+    "fact": "Inflation measures how fast prices rise; central banks often target about 2% per year.",
+    "keywords": "inflation prices economy interest rates"
+  },
+  {
+    "topic": "Customer churn",
+    "fact": "Churn rate is customers lost divided by customers at the start of the period; 5% monthly churn loses about 46% of customers per year.",
+    "keywords": "customer churn retention subscription business"
+  },
+  {
+    "topic": "Cloud computing",
+    "fact": "Cloud computing rents servers and services on demand; main models are IaaS, PaaS and SaaS.",
+    "keywords": "cloud computing servers saas infrastructure"
+  },
+  {
+    "topic": "Remote work",
+    "fact": "Surveys show hybrid work is the most common arrangement for knowledge workers; commute savings average about 1 hour per day.",
+    "keywords": "remote work hybrid productivity office"
+  },
+  {
+    "topic": "Python",
+    "fact": "Python is a high-level language known for readable syntax; popular for web, data science and automation.",
+    "keywords": "python programming code language script"
+  },
+  {
+    "topic": "Climate change",
+    "fact": "Global average temperature has risen about 1.1 C since the late 1800s, mainly due to greenhouse gas emissions.",
+    "keywords": "climate change warming emissions carbon"
+  }
+]

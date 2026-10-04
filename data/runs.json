@@ -1,0 +1,206 @@
+[
+  {
+    "id": "r_23a7e27e",
+    "workflow_id": "w_6ba6ed50",
+    "label": "Standard",
+    "input": "analyze",
+    "start": "2026-10-04T12:24:01",
+    "end": "2026-10-04T12:24:01",
+    "status": "completed",
+    "duration": 0.014,
+    "tokens": 781,
+    "cost": 0.000312,
+    "steps": [
+      {
+        "node_id": "n1",
+        "agent": "Data Analyst",
+        "role": "Analyst",
+        "model": "grok-3-mini",
+        "input": "analyze",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result.\n- Input considered: analyze\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.014,
+        "tokens": 147,
+        "cost": 5.9e-05,
+        "error": null
+      },
+      {
+        "node_id": "n2",
+        "agent": "Report Writer",
+        "role": "Writer",
+        "model": "grok-3-mini",
+        "input": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result.\n- Input considered: analyze\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result. - Input considered: analyze - Sample finding: the topic has s\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 291,
+        "cost": 0.000116,
+        "error": null
+      },
+      {
+        "node_id": "n3",
+        "agent": "Report Writer",
+        "role": "Writer",
+        "model": "grok-3-mini",
+        "input": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result. - Input considered: analyze - Sample finding: the topic has s\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Writer, working toward \"Turn findings into a clear, short report\", here is a sample result. - Input considered: As Analyst, working toward \"Extract numbers a\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 343,
+        "cost": 0.000137,
+        "error": null
+      }
+    ],
+    "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Writer, working toward \"Turn findings into a clear, short report\", here is a sample result. - Input considered: As Analyst, working toward \"Extract numbers a\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent."
+  },
+  {
+    "id": "r_743e3989",
+    "workflow_id": "w_6ba6ed50",
+    "label": "Standard",
+    "input": "hi",
+    "start": "2026-10-04T12:26:33",
+    "end": "2026-10-04T12:26:33",
+    "status": "completed",
+    "duration": 0.001,
+    "tokens": 777,
+    "cost": 0.000311,
+    "steps": [
+      {
+        "node_id": "n1",
+        "agent": "Data Analyst",
+        "role": "Analyst",
+        "model": "grok-3-mini",
+        "input": "hi",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result.\n- Input considered: hi\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 144,
+        "cost": 5.8e-05,
+        "error": null
+      },
+      {
+        "node_id": "n2",
+        "agent": "Report Writer",
+        "role": "Writer",
+        "model": "grok-3-mini",
+        "input": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result.\n- Input considered: hi\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result. - Input considered: hi - Sample finding: the topic has severa\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 290,
+        "cost": 0.000116,
+        "error": null
+      },
+      {
+        "node_id": "n3",
+        "agent": "Report Writer",
+        "role": "Writer",
+        "model": "grok-3-mini",
+        "input": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result. - Input considered: hi - Sample finding: the topic has severa\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Writer, working toward \"Turn findings into a clear, short report\", here is a sample result. - Input considered: As Analyst, working toward \"Extract numbers a\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 343,
+        "cost": 0.000137,
+        "error": null
+      }
+    ],
+    "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Writer, working toward \"Turn findings into a clear, short report\", here is a sample result. - Input considered: As Analyst, working toward \"Extract numbers a\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent."
+  },
+  {
+    "id": "r_c37f4895",
+    "workflow_id": "w_6ba6ed50",
+    "label": "Fast and cheap",
+    "input": "impact o solar enery on cost",
+    "start": "2026-10-04T12:29:23",
+    "end": "2026-10-04T12:29:23",
+    "status": "completed",
+    "duration": 0.0,
+    "tokens": 855,
+    "cost": 0.000342,
+    "steps": [
+      {
+        "node_id": "n1",
+        "agent": "Data Analyst",
+        "role": "Analyst",
+        "model": "grok-3-mini",
+        "input": "impact o solar enery on cost",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result.\n- Input considered: impact o solar enery on cost\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 215,
+        "cost": 8.6e-05,
+        "error": null
+      },
+      {
+        "node_id": "n2",
+        "agent": "Report Writer",
+        "role": "Writer",
+        "model": "grok-3-mini",
+        "input": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result.\n- Input considered: impact o solar enery on cost\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result. - Input considered: impact o solar enery on cost - Sample fin\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 297,
+        "cost": 0.000119,
+        "error": null
+      },
+      {
+        "node_id": "n3",
+        "agent": "Report Writer",
+        "role": "Writer",
+        "model": "grok-3-mini",
+        "input": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result. - Input considered: impact o solar enery on cost - Sample fin\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Writer, working toward \"Turn findings into a clear, short report\", here is a sample result. - Input considered: As Analyst, working toward \"Extract numbers a\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 343,
+        "cost": 0.000137,
+        "error": null
+      }
+    ],
+    "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Writer, working toward \"Turn findings into a clear, short report\", here is a sample result. - Input considered: As Analyst, working toward \"Extract numbers a\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent."
+  },
+  {
+    "id": "r_b31fed3e",
+    "workflow_id": "w_6ba6ed50",
+    "label": "Thorough",
+    "input": "impact o solar enery on cost",
+    "start": "2026-10-04T12:29:23",
+    "end": "2026-10-04T12:29:23",
+    "status": "completed",
+    "duration": 0.0,
+    "tokens": 855,
+    "cost": 0.000342,
+    "steps": [
+      {
+        "node_id": "n1",
+        "agent": "Data Analyst",
+        "role": "Analyst",
+        "model": "grok-3-mini",
+        "input": "impact o solar enery on cost",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result.\n- Input considered: impact o solar enery on cost\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 215,
+        "cost": 8.6e-05,
+        "error": null
+      },
+      {
+        "node_id": "n2",
+        "agent": "Report Writer",
+        "role": "Writer",
+        "model": "grok-3-mini",
+        "input": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result.\n- Input considered: impact o solar enery on cost\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result. - Input considered: impact o solar enery on cost - Sample fin\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 297,
+        "cost": 0.000119,
+        "error": null
+      },
+      {
+        "node_id": "n3",
+        "agent": "Report Writer",
+        "role": "Writer",
+        "model": "grok-3-mini",
+        "input": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Analyst, working toward \"Extract numbers and insights from the input\", here is a sample result. - Input considered: impact o solar enery on cost - Sample fin\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Writer, working toward \"Turn findings into a clear, short report\", here is a sample result. - Input considered: As Analyst, working toward \"Extract numbers a\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent.",
+        "duration": 0.0,
+        "tokens": 343,
+        "cost": 0.000137,
+        "error": null
+      }
+    ],
+    "output": "[MOCK RESPONSE - no XAI_API_KEY set in .env]\nAs Writer, working toward \"Turn findings into a clear, short report\", here is a sample result.\n- Input considered: As Writer, working toward \"Turn findings into a clear, short report\", here is a sample result. - Input considered: As Analyst, working toward \"Extract numbers a\n- Sample finding: the topic has several key aspects worth reviewing.\n- Next step: hand these findings to the next agent."
+  }
+]

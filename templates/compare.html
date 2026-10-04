@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Compare · AgentFlow{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Simulation and comparison</h1>
+  <p class="muted">Run the same workflow with two strategies (different model and/or extra instructions) and compare.</p></div></div>
+<form class="card" method="post" action="{{ url_for('compare') }}">
+  <div class="grid2">
+    <label>Workflow
+      <select name="workflow_id" required>
+        {% for w in workflows %}<option value="{{ w.id }}" {{ 'selected' if form.get('workflow_id') == w.id }}>{{ w.name }}</option>{% else %}<option value="">No workflows</option>{% endfor %}
+      </select></label>
+    <label>Task / input<input name="input" required value="{{ form.get('input', '') }}" placeholder="e.g. Impact of solar energy on costs"></label>
+  </div>
+  <div class="grid2">
+    {% for s in ['a', 'b'] %}
+    <fieldset><legend>Strategy {{ s|upper }}</legend>
+      <label>Label<input name="label_{{ s }}" value="{{ form.get('label_' ~ s, 'Fast and cheap' if s == 'a' else 'Thorough') }}"></label>
+      <label>Model override
+        <select name="model_{{ s }}">
+          <option value="">Use each agent's own model</option>
+          {% for m in models %}<option value="{{ m }}" {{ 'selected' if form.get('model_' ~ s) == m }}>{{ m }}</option>{% endfor %}
+        </select></label>
+      <label>Extra instructions<textarea name="extra_{{ s }}" rows="3" placeholder="{{ 'Be extremely brief.' if s == 'a' else 'Be detailed and give examples.' }}">{{ form.get('extra_' ~ s, '') }}</textarea></label>
+    </fieldset>
+    {% endfor %}
+  </div>
+  <button class="btn primary" type="submit" {{ 'disabled' if not workflows }}>▶ Run both strategies</button>
+</form>
+{% if results %}
+<div class="card">
+  <h3>Side-by-side results</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Metric</th>{% for r in results %}<th>{{ r.label }}</th>{% endfor %}</tr>
+    <tr><td>Status</td>{% for r in results %}<td><span class="badge status {{ r.status }}">{{ r.status }}</span></td>{% endfor %}</tr>
+    <tr><td>Total time</td>{% for r in results %}<td>{{ r.duration }}s</td>{% endfor %}</tr>
+    <tr><td>Estimated tokens</td>{% for r in results %}<td>{{ r.tokens }}</td>{% endfor %}</tr>
+    <tr><td>Estimated cost</td>{% for r in results %}<td>${{ '%.5f'|format(r.cost) }}</td>{% endfor %}</tr>
+    <tr><td>Steps</td>{% for r in results %}<td>{{ r.steps|length }}</td>{% endfor %}</tr>
+    <tr><td>Final output</td>{% for r in results %}<td><pre>{{ r.output[:700] }}{{ '…' if r.output|length > 700 }}</pre></td>{% endfor %}</tr>
+    <tr><td>Full log</td>{% for r in results %}<td><a href="{{ url_for('logs', open=r.id) }}">Open</a></td>{% endfor %}</tr>
+  </table></div>
+  {% set faster = results[0] if results[0].duration <= results[1].duration else results[1] %}
+  {% set cheaper = results[0] if results[0].cost <= results[1].cost else results[1] %}
+  <p class="muted">Faster: <b>{{ faster.label }}</b> · Cheaper: <b>{{ cheaper.label }}</b></p>
+</div>
+<div class="charts">
+  <div class="card"><h3>Time (s)</h3><div class="chart" data-h="200" data-chart='{{ chart.time|tojson }}'></div></div>
+  <div class="card"><h3>Cost ($)</h3><div class="chart" data-h="200" data-chart='{{ chart.cost|tojson }}'></div></div>
+  <div class="card"><h3>Tokens</h3><div class="chart" data-h="200" data-chart='{{ chart.tokens|tojson }}'></div></div>
+</div>
+{% endif %}
+{% endblock %}

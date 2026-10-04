@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · AgentFlow{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Dashboard</h1><p class="muted">Overview of your agents, workflows and runs.</p></div>
+  <a class="btn primary" href="{{ url_for('workflows') }}">+ New workflow</a></div>
+<div class="stats">
+  <div class="card stat"><span class="muted">Agents</span><b>{{ stats.agents }}</b></div>
+  <div class="card stat"><span class="muted">Workflows</span><b>{{ stats.workflows }}</b></div>
+  <div class="card stat"><span class="muted">Runs</span><b>{{ stats.runs }}</b></div>
+  <div class="card stat"><span class="muted">Total cost (est.)</span><b>${{ '%.4f'|format(stats.cost) }}</b></div>
+  <div class="card stat"><span class="muted">Error rate</span><b>{{ stats.error_rate }}%</b></div>
+</div>
+<div class="card">
+  <h3>Runs per day (last 7 days)</h3>
+  <div class="chart" data-int="1" data-chart='{{ chart|tojson }}'></div>
+</div>
+<div class="card">
+  <h3>Recent runs</h3>
+  {% if recent %}
+  <div class="table-wrap"><table>
+    <tr><th>Workflow</th><th>Label</th><th>Status</th><th>Started</th><th>Time</th><th>Cost</th><th></th></tr>
+    {% for r in recent %}
+    <tr><td>{{ wf.get(r.workflow_id, '(deleted)') }}</td><td>{{ r.label }}</td>
+      <td><span class="badge status {{ r.status }}">{{ r.status }}</span></td>
+      <td>{{ r.start.replace('T', ' ') }}</td><td>{{ r.duration }}s</td><td>${{ '%.5f'|format(r.cost) }}</td>
+      <td><a href="{{ url_for('logs', open=r.id) }}">View</a></td></tr>
+    {% endfor %}
+  </table></div>
+  {% else %}<p class="muted">No runs yet. <a href="{{ url_for('workflows') }}">Create or run a workflow</a> or <a href="{{ url_for('template_library') }}">use a template</a>.</p>{% endif %}
+</div>
+{% endblock %}

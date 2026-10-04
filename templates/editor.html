@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Editor · {{ wf.name }}{% endblock %}
+{% block content %}
+<div class="page-head"><div><h1>Workflow editor</h1>
+  <p class="muted">Add agents (drag or click) · drag the right-hand dot of a node onto another node to connect · click to select, then Delete.</p></div>
+  <a class="btn" href="{{ url_for('workflows') }}">← Workflows</a></div>
+<div class="card toolbar">
+  <input id="wf-name" value="{{ wf.name }}" aria-label="Workflow name">
+  <button class="btn primary" id="save-btn" type="button">Save layout</button>
+  <button class="btn danger" id="del-btn" type="button" disabled>Delete selected</button>
+  <span id="status" class="muted"></span>
+  <form id="run-form" class="row grow" method="post" action="{{ url_for('wf_run', wid=wf.id) }}">
+    <input name="input" placeholder="Task / input for the first agent" required>
+    <button class="btn accent" type="submit">▶ Run</button></form>
+</div>
+<div class="editor">
+  <div class="card palette">
+    <h3>Agents</h3>
+    {% for a in agents %}
+    <div class="pal-item" draggable="true" data-agent="{{ a.id }}" title="Drag onto canvas or click to add">
+      <span class="badge role" style="--h:{{ a.role|hue }}">{{ a.role }}</span> {{ a.name }}</div>
+    {% else %}<p class="muted">No agents. <a href="{{ url_for('agents') }}">Create one</a>.</p>{% endfor %}
+  </div>
+  <div class="canvas-wrap"><svg id="canvas" width="1800" height="1000"></svg></div>
+</div>
+<script type="application/json" id="editor-data">{{ {"workflow": wf, "agents": agents, "save_url": url_for('api_wf_save', wid=wf.id)}|tojson }}</script>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='editor.js') }}"></script>{% endblock %}

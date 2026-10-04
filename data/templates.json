@@ -1,0 +1,128 @@
+[
+  {
+    "id": "tpl_research",
+    "name": "Research Brief",
+    "category": "Research",
+    "description": "Research a topic, then write a short report.",
+    "workflow": {
+      "name": "Research Brief",
+      "nodes": [
+        {
+          "id": "n1",
+          "agent_id": "a_researcher",
+          "x": 40,
+          "y": 90
+        },
+        {
+          "id": "n2",
+          "agent_id": "a_writer",
+          "x": 290,
+          "y": 170
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tpl_coding",
+    "name": "Code and Document",
+    "category": "Coding",
+    "description": "Generate code for a task, then document it.",
+    "workflow": {
+      "name": "Code and Document",
+      "nodes": [
+        {
+          "id": "n1",
+          "agent_id": "a_coder",
+          "x": 40,
+          "y": 90
+        },
+        {
+          "id": "n2",
+          "agent_id": "a_writer",
+          "x": 290,
+          "y": 170
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tpl_data",
+    "name": "Data Insight Pipeline",
+    "category": "Data analysis",
+    "description": "Gather facts, analyse the numbers, and report insights.",
+    "workflow": {
+      "name": "Data Insight Pipeline",
+      "nodes": [
+        {
+          "id": "n1",
+          "agent_id": "a_researcher",
+          "x": 40,
+          "y": 90
+        },
+        {
+          "id": "n2",
+          "agent_id": "a_analyst",
+          "x": 290,
+          "y": 170
+        },
+        {
+          "id": "n3",
+          "agent_id": "a_writer",
+          "x": 540,
+          "y": 90
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        }
+      ]
+    }
+  },
+  {
+    "id": "tpl_business",
+    "name": "Business Report Automation",
+    "category": "Business automation",
+    "description": "Analyse business data and produce a ready-to-send report.",
+    "workflow": {
+      "name": "Business Report Automation",
+      "nodes": [
+        {
+          "id": "n1",
+          "agent_id": "a_analyst",
+          "x": 40,
+          "y": 90
+        },
+        {
+          "id": "n2",
+          "agent_id": "a_writer",
+          "x": 290,
+          "y": 170
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        }
+      ]
+    }
+  }
+]
